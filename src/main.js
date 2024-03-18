@@ -1,12 +1,36 @@
-import kaboom from "kaboom"
+import kaboom from "kaboom";
 
-const k = kaboom()
+// initialize context
+kaboom();
 
-k.loadSprite("bean", "sprites/bean.png")
+// load assets
+loadSprite("bird", "sprites/bird.png");
+loadSprite("bg", "sprites/bg.png");
+loadSprite("pipe", "sprites/pipe.png");
+// load sounds
+loadSound("jump", "sounds/jump.mp3");
+loadSound("bruh", "sounds/bruh.mp3");
+loadSound("pass", "sounds/pass.mp3");
 
-k.add([
-	k.pos(120, 80),
-	k.sprite("bean"),
-])
+let highScore = 0;
 
-k.onClick(() => k.addKaboom(k.mousePos()))
+// Game scene
+scene("game", () => {
+	const PIPE_GAP = 140;
+	let score = 0;
+	setGravity(1600);
+
+	add([sprite("bg", { width: width(), height: height() })]);
+
+	const scoreText = add([text(score), pos(12, 12)]);
+
+	const player = add([sprite("bird"), scale(1.2), pos(100, 50), area(), body()]);
+});
+
+// Game over scene
+scene("gameover", () => {
+
+});
+
+// Start the game
+go("game");
