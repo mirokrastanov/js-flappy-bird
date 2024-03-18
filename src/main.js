@@ -49,6 +49,18 @@ scene("game", () => {
 		]);
 	}
 
+	loop(1.5, () => createPipes());
+
+	onUpdate("pipe", (pipe) => {
+		pipe.move(-300, 0);
+
+		if (pipe.passed === false && pipe.pos.x < player.pos.x) {
+			pipe.passed = true;
+			score += 1;
+			scoreText.text = score;
+			play("pass");
+		}
+	});
 
 
 });
