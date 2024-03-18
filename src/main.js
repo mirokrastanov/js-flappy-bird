@@ -25,6 +25,32 @@ scene("game", () => {
 	const scoreText = add([text(score), pos(12, 12)]);
 
 	const player = add([sprite("bird"), scale(1.2), pos(100, 50), area(), body()]);
+
+	function createPipes() {
+		const offset = rand(-50, 50);
+		// bottom pipe
+		add([
+			sprite("pipe"),
+			pos(width(), height() / 2 + offset + PIPE_GAP / 2),
+			"pipe",
+			scale(2),
+			area(),
+			{ passed: false },
+		]);
+
+		// top pipe
+		add([
+			sprite("pipe", { flipY: true }),
+			pos(width(), height() / 2 + offset - PIPE_GAP / 2),
+			"pipe",
+			anchor("botleft"),
+			scale(2),
+			area(),
+		]);
+	}
+
+
+
 });
 
 // Game over scene
