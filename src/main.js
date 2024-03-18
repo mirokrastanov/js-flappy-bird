@@ -62,6 +62,22 @@ scene("game", () => {
 		}
 	});
 
+	player.onCollide("pipe", () => {
+		const ss = screenshot();
+		go("gameover", score, ss);
+	});
+
+	player.onUpdate(() => {
+		if (player.pos.y > height()) {
+			const ss = screenshot();
+			go("gameover", score, ss);
+		}
+	});
+
+	onKeyPress("space", () => {
+		play("jump");
+		player.jump(400);
+	});
 
 });
 
