@@ -78,7 +78,11 @@ scene("game", () => {
 		play("jump");
 		player.jump(400);
 	});
-
+	// For touch
+	window.addEventListener("touchstart", () => {
+		play("jump");
+		player.jump(400);
+	});
 });
 
 // Game over scene
