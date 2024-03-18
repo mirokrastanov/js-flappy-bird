@@ -92,7 +92,16 @@ scene("gameover", (score, screenshot) => {
 	play("bruh");
 
 	loadSprite("gameOverScreen", screenshot);
-	
+	add([sprite("gameOverScreen", { width: width(), height: height() })]);
+
+	add([
+		text("gameover!\n" + "score: " + score + "\nhigh score: " + highScore, { size: 45 }),
+		pos(width() / 2, height() / 3),
+	]);
+
+	onKeyPress("space", () => {
+		go("game");
+	});
 });
 
 // Start the game
