@@ -86,8 +86,13 @@ scene("game", () => {
 });
 
 // Game over scene
-scene("gameover", () => {
+scene("gameover", (score, screenshot) => {
+	if (score > highScore) highScore = score;
 
+	play("bruh");
+
+	loadSprite("gameOverScreen", screenshot);
+	
 });
 
 // Start the game
